@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Ensure proper viewport height on mobile */
+html, body {
+  @apply h-full;
+  overscroll-behavior-y: none;
+}
+
+body {
+  @apply min-h-screen bg-gradient-to-br from-[#8B4513] to-[#654321];
+  margin: 0;
+  padding: 0;
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior-y: none;
+  /* Prevent content shift when modal opens */
+  position: relative;
+}
+
+#root {
+  @apply min-h-screen flex flex-col;
+}
+
+/* Mobile-first padding and spacing */
+.container {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+/* Better touch targets for mobile */
+button, 
+a,
+[role="button"] {
+  @apply min-h-[44px] min-w-[44px];
+}
+
+/* Improved mobile form elements */
+input,
+select,
+textarea {
+  @apply text-base; /* Minimum 16px to prevent zoom on mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove tap highlight on interactive elements */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Auth UI customization */
+.auth-container {
+  @apply bg-transparent;
+}
+
+.auth-button {
+  @apply bg-[#8B4513] hover:bg-[#654321] text-white font-medium py-3 px-4 rounded-lg transition-colors w-full flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed min-h-[48px];
+}
+
+.auth-input {
+  @apply w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B4513] min-h-[48px];
+}
+
+/* Mobile modal improvements */
+.modal-content {
+  @apply max-h-[90vh] w-full mx-4 overflow-y-auto;
+}
+
+/* Mobile-friendly scrollbars */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+/* Safe area insets for modern mobile devices */
+@supports(padding: max(0px)) {
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
+  
+  .safe-top {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+  }
+}
+
+/* Ensure text is visible */
+.text-white {
+  color: white !important;
+}
+
+.text-gray-300 {
+  color: rgb(209 213 219) !important;
+}
+
+/* Better mobile grid layouts */
+.grid {
+  @apply gap-4 sm:gap-6;
+}
+
+/* Improved mobile navigation */
+.mobile-nav {
+  @apply fixed inset-x-0 bottom-0 bg-white/10 backdrop-blur-md border-t border-white/20 safe-bottom;
+}
+
+/* Mobile-optimized charts */
+.chart-container {
+  @apply w-full overflow-hidden touch-pan-x;
+  min-height: 200px;
+}
+
+/* Mobile-friendly modals */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+  touch-action: none;
+}
+
+.modal-container {
+  @apply fixed inset-0 flex items-center justify-center p-4 z-50;
+  touch-action: none;
+}
+
+/* Mobile-optimized buttons */
+.action-button {
+  @apply min-h-[48px] px-4 py-3 rounded-lg font-medium transition-colors;
+  touch-action: manipulation;
+}
+
+/* Mobile-friendly tabs */
+.tab-button {
+  @apply min-h-[48px] px-4 flex items-center justify-center;
+  touch-action: manipulation;
+}
+
+/* Prevent text selection on interactive elements */
+.no-select {
+  @apply select-none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
